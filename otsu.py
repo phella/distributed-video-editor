@@ -1,7 +1,10 @@
 import time
 import zmq
 import random
+import cv2
+import numpy as np
 
+# send socket 
 def consumer():
     consumer_id = random.randrange(1,10005)
     print ("I am consumer " + str(consumer_id))
@@ -14,11 +17,7 @@ def consumer():
     consumer_sender.connect("tcp://127.0.0.1:5558")
     
     while True:
-        work = consumer_receiver.recv_json()
-        data = work['num']
-        result = { 'consumer' : consumer_id, 'num' : data}
-        if data%2 == 0: 
-            consumer_sender.send_json(result)
-            print("samo 3leko")
-
+        result = consumer_receiver.recv_pyobj()
+        ret2,result["img"] = cv2.threshold(result["img"],0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+        consumer_sender.send_pyobj(result)
 consumer()
