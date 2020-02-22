@@ -9,4 +9,15 @@ def log(str , id = "0"):
 	f = open(filename,"a+")
 	f.write(str)
 	f.write("\n")
+
+def listToString(s):  
+    
+    str1 = ""  
+    
+    # traverse in the string   
+    for ele in s:  
+        str1 += str(ele) + " "  
+    
+    # return string   
+    return str1  
 	

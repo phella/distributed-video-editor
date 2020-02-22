@@ -1,7 +1,7 @@
 import time
 import zmq
 import sys
-from utility import log
+from utility import log , listToString
 
 def result_collector(base_socket):
     context = zmq.Context()
@@ -12,5 +12,6 @@ def result_collector(base_socket):
     collecter_data = {}
     while True:
         result = results_receiver.recv_pyobj()
+        log("frame no " + str(result["frame_no"]) + " countours = " + listToString( result["res"] ) )
 
 result_collector(sys.argv[1])
