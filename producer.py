@@ -2,18 +2,19 @@ import time
 import zmq
 import cv2
 import numpy as np
+import sys
 
- 
 def producer(num_processes , base_socket):
     context = zmq.Context()
     zmq_sockets = []
     counter = 0
-    for i in range(num_processes):
+    for i in range(int(num_processes)):
     	zmq_socket = context.socket(zmq.PUSH)
-    	zmq_socket.bind("tcp://127.0.0.1:" + str( base_socket + counter) )  # need to check base_Socket type
-        zmq_sockets.append(zmq_Socket)
+    	zmq_socket.bind("tcp://127.0.0.1:" + str( int(base_socket) + counter) )  # need to check base_Socket type
+        print("eh yaba"+ str( int(base_socket) + counter))
+        zmq_sockets.append(zmq_socket)
         counter += 1
-        
+
     vidcap = cv2.VideoCapture('test.mp4')
     success,image = vidcap.read()
     frame_no = 0
