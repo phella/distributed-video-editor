@@ -8,10 +8,9 @@ def producer(num_processes , base_socket):
     context = zmq.Context()
     zmq_sockets = []
     counter = 0
-    for i in range(int(num_processes)):
+    for i in range( int(num_processes) ):
     	zmq_socket = context.socket(zmq.PUSH)
-    	zmq_socket.bind("tcp://127.0.0.1:" + str( int(base_socket) + counter) )  # need to check base_Socket type
-        #print("eh yaba"+ str( int(base_socket) + counter))
+    	zmq_socket.bind("tcp://127.0.0.1:" + str( int(base_socket) + counter) ) 
         zmq_sockets.append(zmq_socket)
         counter += 1
 

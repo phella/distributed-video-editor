@@ -1,6 +1,10 @@
 
 import subprocess
 import os
+import sys
+import math
+
+n = int( sys.argv[1] )
 
 # remove old log files
 dir_name = os.getcwd()
@@ -10,11 +14,10 @@ for item in test:
     if item.endswith(".txt"):
         os.remove(os.path.join(dir_name, item))
 
+subprocess.Popen(["python","producer.py", str(n) ,"5000"])
+for i in range(n):
+        subprocess.Popen(["python","otsu.py","5000",str(i),"5058"])
 
-# to do variable n from argv
-subprocess.Popen(["python","producer.py","1","5000"])
-subprocess.Popen(["python","otsu.py","5000","0","5058"])
-subprocess.Popen(["python","collector.py","5058","1","6001"])
-subprocess.Popen(["python","contour.py","6001","1","4000"])     
-subprocess.Popen(["python","contour.py","6002","1","4000"])
-subprocess.Popen(["python","collector2.py","4000"])
+for i in range ( int(math.ceil( n / 2 ) )):
+        subprocess.Popen(["python","collector.py", "5058" , str(i) ,"6001"])
+
