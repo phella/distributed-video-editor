@@ -1,11 +1,12 @@
 import inspect
 
-def log(str):
+def log(str , id = None):
 	frame = inspect.stack()[1]
 	module = inspect.getmodule(frame[0])
 	filename = module.__file__
-	filename = filename[0:-3]
+	filename = filename[0:-3] + id
 	filename += ".log.txt"
 	f= open(filename,"a+")
 	f.write(str)
+	f.write("\n")
 	

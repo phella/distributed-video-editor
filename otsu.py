@@ -5,6 +5,8 @@ import cv2
 import numpy as np
 import sys
 import math
+from utility import log
+
 # send socket
 def consumer(base_socket,consumer_id):
     #print ("I am consumer " + str(consumer_id))
@@ -20,5 +22,6 @@ def consumer(base_socket,consumer_id):
         result = consumer_receiver.recv_pyobj()
         #print(str(consumer_id)+ "has recieved")
         ret2,result["img"] = cv2.threshold(result["img"],0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+        log("recived frame no : " + str(result["frame_no"]) + " " , consumer_id)
         consumer_sender.send_pyobj(result)
 consumer(sys.argv[1],sys.argv[2])
