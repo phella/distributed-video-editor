@@ -12,12 +12,9 @@ for item in test:
 
 
 # to do variable n from argv
-subprocess.Popen(["python","producer.py","5","5000"])
-subprocess.Popen(["python","otsu.py","5000","0"])
-subprocess.Popen(["python","otsu.py","5001","1"])
-subprocess.Popen(["python","otsu.py","5002","2"])
-subprocess.Popen(["python","otsu.py","5003","3"])
-subprocess.Popen(["python","otsu.py","5004","4"])
-subprocess.Popen(["python","collector.py","5058","1"])
-subprocess.Popen(["python","collector.py","5059","2"])
-subprocess.Popen(["python","collector.py","5060","3"])
+subprocess.Popen(["python","producer.py","1","5000"])
+subprocess.Popen(["python","otsu.py","5000","0","5058"])
+subprocess.Popen(["python","collector.py","5058","1","6001"])
+subprocess.Popen(["python","contour.py","6001","1","4000"])     
+subprocess.Popen(["python","contour.py","6002","1","4000"])
+subprocess.Popen(["python","collector2.py","4000"])
