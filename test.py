@@ -14,7 +14,8 @@ for item in test:
     if item.endswith(".txt"):
         os.remove(os.path.join(dir_name, item))
 
-subprocess.Popen(["python","producer.py", str(n) ,"5000"])
+subprocess.Popen(["python","producer.py","5000"])
+
 for i in range(n):
         subprocess.Popen(["python","otsu.py","5000",str(i),"5058"])
 
