@@ -13,7 +13,7 @@ def result_collector(recive_socket,collector_id,send_socket):
         results_receiver.bind("tcp://127.0.0.1:" + str( int(recive_socket) + i + int(collector_id) * 2 ))
     	zmq_recieve.append(results_receiver)
         result_sender = context.socket(zmq.PUSH)
-    	result_sender.bind("tcp://127.0.0.1:" + str( int(send_socket) + i + int(collector_id) * 2 ) )  
+    	result_sender.bind("tcp://192.168.43.144:" + str( int(send_socket) + i + int(collector_id) * 2 ) )  
         zmq_send.append(result_sender)
 
     while True:

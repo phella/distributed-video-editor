@@ -13,7 +13,7 @@ import skimage
 def consumer(base_socket,contour_id,send_socket):
     context = zmq.Context()
     contour_receiver = context.socket(zmq.PULL)
-    contour_receiver.connect("tcp://127.0.0.1:" + str(int( base_socket) + int(contour_id)))
+    contour_receiver.connect("tcp://192.168.43.144:" + str(int( base_socket) + int(contour_id)))
     # send work
     contour_sender = context.socket(zmq.PUSH)
     contour_sender.connect("tcp://127.0.0.1:" + send_socket)
