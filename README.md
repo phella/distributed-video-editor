@@ -1,4 +1,7 @@
 # distributed-video-editor
 
 Run command :
-  - python test.py test2.py
+  - First machine :
+    - python test.py (n)
+  - Second machine :
+    - python test2.py (n)
